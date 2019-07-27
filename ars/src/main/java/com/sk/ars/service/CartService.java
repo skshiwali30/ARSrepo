@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.sk.ars.model.UserModel;
 import com.sk.arsbackend.dao.CartLineDAO;
-import com.sk.arsbackend.dao.ProductDAO;
+import com.sk.arsbackend.dao.FlightDAO;
 import com.sk.arsbackend.dao.UserDAO;
 import com.sk.arsbackend.dto.Cart;
 import com.sk.arsbackend.dto.CartLine;
-import com.sk.arsbackend.dto.Product;
+import com.sk.arsbackend.dto.Flight;
 
 @Service("cartService")
 public class CartService {
@@ -22,7 +22,7 @@ public class CartService {
 	private CartLineDAO cartLineDAO;
 	
 	@Autowired
-	private ProductDAO productDAO;
+	private FlightDAO flightDAO;
 		
 	@Autowired
 	private HttpSession session;
@@ -41,17 +41,17 @@ public class CartService {
 		double oldTotal = cartLine.getTotal();
 
 		
-		Product product = cartLine.getProduct();
+		Flight product = cartLine.getProduct();
 		
 		// check if that much quantity is available or not
-		if(product.getQuantity() < count) {
+		if(product.getNoOfSeats() < count) {
 			return "result=unavailable";		
 		}	
 		
 		// update the cart line
 		cartLine.setProductCount(count);
-		cartLine.setBuyingPrice(product.getUnitPrice());
-		cartLine.setTotal(product.getUnitPrice() * count);
+		//cartLine.setBuyingPrice(product.getUnitPrice());
+		//cartLine.setTotal(product.getUnitPrice() * count);
 		cartLineDAO.update(cartLine);
 
 	
@@ -72,13 +72,13 @@ public class CartService {
 		if(cartLine==null) {
 			// add a new cartLine if a new product is getting added
 			cartLine = new CartLine();
-			Product product = productDAO.get(productId);
+			Flight product = flightDAO.get(productId);
 			// transfer the product details to cartLine
 			cartLine.setCartId(cart.getId());
 			cartLine.setProduct(product);
 			cartLine.setProductCount(1);
-			cartLine.setBuyingPrice(product.getUnitPrice());
-			cartLine.setTotal(product.getUnitPrice());
+			//cartLine.setBuyingPrice(product.getUnitPrice());
+			//cartLine.setTotal(product.getUnitPrice());
 			
 			// insert a new cartLine
 			cartLineDAO.add(cartLine);
@@ -132,13 +132,13 @@ public class CartService {
 		int lineCount = 0;
 		String response = "result=success";
 		boolean changed = false;
-		Product product = null;
+		Flight product = null;
 		for(CartLine cartLine : cartLines) {					
 			product = cartLine.getProduct();
 			changed = false;
 			// check if the product is active or not
 			// if it is not active make the availability of cartLine as false
-			if((!product.isActive() && product.getQuantity() == 0) && cartLine.isAvailable()) {
+			/*if((!product.isActive() && product.getQuantity() == 0) && cartLine.isAvailable()) {
 				cartLine.setAvailable(false);
 				changed = true;
 			}			
@@ -147,10 +147,10 @@ public class CartService {
 			if((product.isActive() && product.getQuantity() > 0) && !(cartLine.isAvailable())) {
 					cartLine.setAvailable(true);
 					changed = true;
-			}
+			}*/
 			
 			// check if the buying price of product has been changed
-			if(cartLine.getBuyingPrice() != product.getUnitPrice()) {
+			/*if(cartLine.getBuyingPrice() != product.getUnitPrice()) {
 				// set the buying price to the new price
 				cartLine.setBuyingPrice(product.getUnitPrice());
 				// calculate and set the new total
@@ -164,7 +164,7 @@ public class CartService {
 				cartLine.setTotal(cartLine.getProductCount() * product.getUnitPrice());
 				changed = true;
 				
-			}
+			}*/
 			
 			// changes has happened
 			if(changed) {				

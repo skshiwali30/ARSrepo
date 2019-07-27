@@ -26,7 +26,7 @@
                     </li>
                     
                     <li id="listProducts">
-                        <a href="${contextRoot}/show/all/products">View Products</a>
+                        <a href="${contextRoot}/show/all/flights">View Flights</a>
                     </li>
 					<security:authorize access="hasAuthority('ADMIN')">
 	                    <li id="manageProduct">
@@ -54,7 +54,7 @@
 		                    <security:authorize access="hasAuthority('USER')">
 			                    <li id="cart">
 			                        <a href="${contextRoot}/cart/show">
-			                        	<span class="glyphicon glyphicon-shopping-cart"></span>&#160;<span class="badge">${userModel.cart.cartLines}</span> - &#8377; ${userModel.cart.grandTotal} 
+			                        	<span class="glyphicon glyphicon-bold"></span>&#160;<span class="badge">${userModel.cart.cartLines}</span> - &#8377; ${userModel.cart.grandTotal} 
 			                        </a>
 			                    </li>		     
 			                	<li role="separator" class="divider"></li>	                                   

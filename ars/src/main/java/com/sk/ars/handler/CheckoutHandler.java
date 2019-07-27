@@ -14,14 +14,14 @@ import org.springframework.stereotype.Component;
 import com.sk.ars.model.CheckoutModel;
 import com.sk.ars.model.UserModel;
 import com.sk.arsbackend.dao.CartLineDAO;
-import com.sk.arsbackend.dao.ProductDAO;
+import com.sk.arsbackend.dao.FlightDAO;
 import com.sk.arsbackend.dao.UserDAO;
 import com.sk.arsbackend.dto.Address;
 import com.sk.arsbackend.dto.Cart;
 import com.sk.arsbackend.dto.CartLine;
+import com.sk.arsbackend.dto.Flight;
 import com.sk.arsbackend.dto.OrderDetail;
 import com.sk.arsbackend.dto.OrderItem;
-import com.sk.arsbackend.dto.Product;
 import com.sk.arsbackend.dto.User;
 
 @Component
@@ -33,7 +33,7 @@ public class CheckoutHandler {
 	private UserDAO userDAO;
 	
 	@Autowired
-	private ProductDAO productDAO;
+	private FlightDAO flightDAO;
 
 	@Autowired
 	private CartLineDAO cartLineDAO;
@@ -139,7 +139,7 @@ public class CheckoutHandler {
 		
 		double orderTotal = 0.0;
 		int orderCount = 0;
-		Product product = null;
+		Flight product = null;
 		
 		for(CartLine cartLine : cartLines) {
 			
@@ -159,9 +159,9 @@ public class CheckoutHandler {
 			// update the product
 			// reduce the quantity of product
 			product = cartLine.getProduct();
-			product.setQuantity(product.getQuantity() - cartLine.getProductCount());
-			product.setPurchases(product.getPurchases() + cartLine.getProductCount());
-			productDAO.update(product);
+			//product.setQuantity(product.getQuantity() - cartLine.getProductCount());
+			//product.setPurchases(product.getPurchases() + cartLine.getProductCount());
+			flightDAO.update(product);
 			
 			// delete the cartLine
 			cartLineDAO.remove(cartLine);

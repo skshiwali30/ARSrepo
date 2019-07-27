@@ -3,19 +3,19 @@ package com.sk.ars.validator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.sk.arsbackend.dto.Product;
+import com.sk.arsbackend.dto.Flight;
 
 public class ProductValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return Product.class.equals(clazz);
+		return Flight.class.equals(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		
-		Product product = (Product) target;
+		/*
+		Flight product = (Flight) target;
 		if(product.getFile() == null || product.getFile().getOriginalFilename().equals("")) {
 			errors.rejectValue("file", null, "Please select a file to upload!");
 			return;
@@ -28,7 +28,7 @@ public class ProductValidator implements Validator {
 				errors.rejectValue("file", null, "Please select an image file to upload!");
 				return;	
 			}
-
+		 */
+		
 	}
-
 }

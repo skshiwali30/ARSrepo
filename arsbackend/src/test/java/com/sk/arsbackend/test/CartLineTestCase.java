@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.sk.arsbackend.dao.CartLineDAO;
-import com.sk.arsbackend.dao.ProductDAO;
+import com.sk.arsbackend.dao.FlightDAO;
 import com.sk.arsbackend.dao.UserDAO;
 import com.sk.arsbackend.dto.Cart;
 import com.sk.arsbackend.dto.CartLine;
@@ -21,7 +21,7 @@ public class CartLineTestCase {
 	
 	
 	private static CartLineDAO cartLineDAO;
-	private static ProductDAO productDAO;
+	private static FlightDAO flightDAO;
 	private static UserDAO userDAO;
 	
 	
@@ -34,7 +34,7 @@ public class CartLineTestCase {
 		context.scan("com.sk.arsbackend");
 		context.refresh();
 		cartLineDAO = (CartLineDAO)context.getBean("cartLineDAO");
-		productDAO = (ProductDAO)context.getBean("productDAO");
+		flightDAO = (FlightDAO)context.getBean("flightDAO");
 		userDAO = (UserDAO)context.getBean("userDAO");
 	}
 	
@@ -47,7 +47,7 @@ public class CartLineTestCase {
 		Cart cart = user.getCart();
 		
 		// fetch the product 
-		Product product = productDAO.get(2);
+		Product product = flightDAO.get(2);
 		
 		// Create a new CartLine
 		cartLine = new CartLine();
@@ -82,7 +82,7 @@ public class CartLineTestCase {
 				
 		double oldTotal = cartLine.getTotal();
 				
-		cartLine.setTotal(cartLine.getProduct().getUnitPrice() * cartLine.getProductCount());
+		//cartLine.setTotal(cartLine.getProduct().getUnitPrice() * cartLine.getProductCount());
 		
 		cart.setGrandTotal(cart.getGrandTotal() + (cartLine.getTotal() - oldTotal));
 		

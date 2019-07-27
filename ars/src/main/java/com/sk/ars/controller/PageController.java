@@ -1,8 +1,5 @@
 package com.sk.ars.controller;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,9 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sk.ars.exception.ProductNotFoundException;
 import com.sk.arsbackend.dao.CategoryDAO;
-import com.sk.arsbackend.dao.ProductDAO;
+import com.sk.arsbackend.dao.FlightDAO;
 import com.sk.arsbackend.dto.Category;
-import com.sk.arsbackend.dto.Product;
+import com.sk.arsbackend.dto.Flight;
 
 @Controller
 public class PageController {
@@ -33,7 +30,7 @@ public class PageController {
 	private CategoryDAO categoryDAO;
 	
 	@Autowired
-	private ProductDAO productDAO;
+	private FlightDAO flightDAO;
 	
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(@RequestParam(name="logout",required=false)String logout) {		
@@ -76,15 +73,12 @@ public class PageController {
 	 * Methods to load all the products and based on category
 	 * */
 	
-	@RequestMapping(value = "/show/all/products")
-	public ModelAndView showAllProducts() {		
+	@RequestMapping(value = "/show/all/flights")
+	public ModelAndView showAllFlights() {		
 		ModelAndView mv = new ModelAndView("page");		
-		mv.addObject("title","All Products");
+		mv.addObject("title","All Flights");
 		
-		//passing the list of categories
-		mv.addObject("categories", categoryDAO.list());
-		
-		mv.addObject("userClickAllProducts",true);
+		mv.addObject("userClickAllFlights",true);
 		return mv;				
 	}	
 	
@@ -105,7 +99,7 @@ public class PageController {
 		// passing the single category object
 		mv.addObject("category", category);
 		
-		mv.addObject("userClickCategoryProducts",true);
+		mv.addObject("userClickCategoryFlights",true);
 		return mv;				
 	}	
 	
@@ -119,16 +113,16 @@ public class PageController {
 		
 		ModelAndView mv = new ModelAndView("page");
 		
-		Product product = productDAO.get(id);
+		Flight product = flightDAO.get(id);
 		
 		if(product == null) throw new ProductNotFoundException();
 		
 		// update the view count
-		product.setViews(product.getViews() + 1);
-		productDAO.update(product);
+		// product.setViews(product.getViews() + 1);
+		// flightDAO.update(product);
 		//---------------------------
 		
-		mv.addObject("title", product.getName());
+		mv.addObject("title", product.getCode());
 		mv.addObject("product", product);
 		
 		mv.addObject("userClickShowProduct", true);

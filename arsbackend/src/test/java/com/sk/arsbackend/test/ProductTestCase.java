@@ -6,26 +6,23 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.sk.arsbackend.dao.ProductDAO;
-import com.sk.arsbackend.dto.Product;
+import com.sk.arsbackend.dao.FlightDAO;
+import com.sk.arsbackend.dto.Flight;
 
 public class ProductTestCase {
 
 	private static AnnotationConfigApplicationContext context;
 	
+	private static FlightDAO flightDAO;
 	
-	private static ProductDAO productDAO;
-	
-	
-	private Product product;
-	
+	private Flight product;
 	
 	@BeforeClass
 	public static void init() {
 		context = new AnnotationConfigApplicationContext();
 		context.scan("com.sk.arsbackend");
 		context.refresh();
-		productDAO = (ProductDAO)context.getBean("productDAO");
+		flightDAO = (FlightDAO)context.getBean("flightDAO");
 	}
 	
 /*	@Test
@@ -43,21 +40,21 @@ public class ProductTestCase {
 		product.setSupplierId(3);
 		
 		assertEquals("Something went wrong while inserting a new product!",
-				true,productDAO.add(product));		
+				true,flightDAO.add(product));		
 		
 		
 		// reading and updating the category
-		product = productDAO.get(2);
+		product = flightDAO.get(2);
 		product.setName("Samsung Galaxy S7");
 		assertEquals("Something went wrong while updating the existing record!",
-				true,productDAO.update(product));		
+				true,flightDAO.update(product));		
 				
 		assertEquals("Something went wrong while deleting the existing record!",
-				true,productDAO.delete(product));		
+				true,flightDAO.delete(product));		
 		
 		// list
 		assertEquals("Something went wrong while fetching the list of products!",
-				6,productDAO.list().size());		
+				6,flightDAO.list().size());		
 				
 	}
 		*/	
@@ -65,26 +62,7 @@ public class ProductTestCase {
 	@Test
 	public void testListActiveProducts() {
 		assertEquals("Something went wrong while fetching the list of products!",
-				5,productDAO.listActiveProducts().size());				
+				5,flightDAO.listActiveFlights().size());				
 	} 
-	
-	
-	@Test
-	public void testListActiveProductsByCategory() {
-		assertEquals("Something went wrong while fetching the list of products!",
-				3,productDAO.listActiveProductsByCategory(3).size());
-		assertEquals("Something went wrong while fetching the list of products!",
-				2,productDAO.listActiveProductsByCategory(1).size());
-	} 
-	
-	@Test
-	public void testGetLatestActiveProduct() {
-		assertEquals("Something went wrong while fetching the list of products!",
-				3,productDAO.getLatestActiveProducts(3).size());
-		
-	} 
-	
-	
-	
 		
 }

@@ -15,8 +15,8 @@
 			<table id="cart" class="table table-hover table-condensed">
 			   	<thead>
 					<tr>
-						<th style="width:50%">Product</th>
-						<th style="width:10%">Price</th>
+						<th style="width:50%">Flight</th>
+						<th style="width:10%">Fare</th>
 						<th style="width:8%">Quantity</th>
 						<th style="width:22%" class="text-center">Subtotal</th>
 						<th style="width:10%"></th>
@@ -31,16 +31,14 @@
 					<tr>
 						<td data-th="Product">
 							<div class="row">
-								<div class="col-sm-2 hidden-xs">
-									<img src="${images}/${cartLine.product.code}.jpg" alt="${cartLine.product.name}" class="img-responsive dataTableImg"/></div>
 								<div class="col-sm-10">
-									<h4 class="nomargin">${cartLine.product.name} 
+									<h4 class="nomargin">${cartLine.product.code} 
 										<c:if test="${cartLine.available == false}">
 											<strong style="color:red">(Not Available)</strong> 
 										</c:if>
 									</h4>
-									<p>Brand : ${cartLine.product.brand}</p>
-									<p>Description : ${cartLine.product.description}
+									<p>Source : ${cartLine.product.source}</p>
+									<p>Destination : ${cartLine.product.destination}
 								</div>
 							</div>
 						</td>
@@ -63,7 +61,7 @@
 						<td class="text-center"><strong>Total &#8377; ${userModel.cart.grandTotal}</strong></td>
 					</tr>
 					<tr>
-						<td><a href="${contextRoot}/show/all/products" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span> Continue Shopping</a></td>
+						<td><a href="${contextRoot}/show/all/flights" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span> Continue Booking</a></td>
 						<td colspan="2" class="hidden-xs"></td>
 						<td class="hidden-xs text-center"><strong>Total &#8377; ${userModel.cart.grandTotal}/-</strong></td>
 						

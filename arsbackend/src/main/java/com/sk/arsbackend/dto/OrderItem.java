@@ -27,7 +27,7 @@ public class OrderItem implements Serializable {
 	private int id;
 	
 	@OneToOne
-	private Product product;
+	private Flight product;
 	
 	@ManyToOne
 	@JoinColumn(name = "order_id")
@@ -58,11 +58,11 @@ public class OrderItem implements Serializable {
 		this.id = id;
 	}
 
-	public Product getProduct() {
+	public Flight getProduct() {
 		return product;
 	}
 
-	public void setProduct(Product product) {
+	public void setProduct(Flight product) {
 		this.product = product;
 	}
 

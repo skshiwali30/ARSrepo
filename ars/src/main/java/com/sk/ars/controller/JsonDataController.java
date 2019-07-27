@@ -4,59 +4,28 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sk.arsbackend.dao.ProductDAO;
-import com.sk.arsbackend.dto.Product;
+import com.sk.arsbackend.dao.FlightDAO;
+import com.sk.arsbackend.dto.Flight;
 
 @Controller
 @RequestMapping("/json/data")
 public class JsonDataController {
 
 	@Autowired
-	private ProductDAO productDAO;
+	private FlightDAO flightDAO;
 	
-
 	@RequestMapping("/admin/all/products")
 	@ResponseBody
-	public List<Product> getAllProductsList() {		
-		return productDAO.list();
-				
+	public List<Flight> getAllProductsList() {		
+		return flightDAO.list();
 	}	
 	
-	
-	@RequestMapping("/all/products")
+	@RequestMapping("/all/flights")
 	@ResponseBody
-	public List<Product> getAllProducts() {
-		
-		return productDAO.listActiveProducts();
-				
+	public List<Flight> getAllProducts() {
+		return flightDAO.listActiveFlights();
 	}
-	
-	@RequestMapping("/category/{id}/products")
-	@ResponseBody
-	public List<Product> getProductsByCategory(@PathVariable int id) {
-		
-		return productDAO.listActiveProductsByCategory(id);
-				
-	}
-	
-	
-	@RequestMapping("/mv/products")
-	@ResponseBody
-	public List<Product> getMostViewedProducts() {		
-		return productDAO.getProductsByParam("views", 5);				
-	}
-		
-	@RequestMapping("/mp/products")
-	@ResponseBody
-	public List<Product> getMostPurchasedProducts() {		
-		return productDAO.getProductsByParam("purchases", 5);				
-	}
-	
-	
-	
-	
 }

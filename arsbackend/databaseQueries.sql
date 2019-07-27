@@ -1,3 +1,17 @@
+CREATE TABLE FLIGHT (
+	id IDENTITY,
+	code varchar(30),
+	source varchar(20),
+	destination varchar(20),
+	departureTime varchar(10),
+	arrivalTime varchar(10),
+	no_of_seats int(10),
+	is_active BOOLEAN,
+	fare double,
+	constraint pk_flightDetails_id primary key(id)
+);
+
+
 CREATE TABLE category (
 	id IDENTITY,
 	name VARCHAR(50),

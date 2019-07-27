@@ -19,12 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sk.ars.util.FileUtil;
 import com.sk.ars.validator.ProductValidator;
 import com.sk.arsbackend.dao.CategoryDAO;
-import com.sk.arsbackend.dao.ProductDAO;
+import com.sk.arsbackend.dao.FlightDAO;
 import com.sk.arsbackend.dto.Category;
-import com.sk.arsbackend.dto.Product;
+import com.sk.arsbackend.dto.Flight;
 
 @Controller
 @RequestMapping("/manage")
@@ -33,7 +32,7 @@ public class ManagementController {
 	private static final Logger logger = LoggerFactory.getLogger(ManagementController.class);
 
 	@Autowired
-	private ProductDAO productDAO;
+	private FlightDAO flightDAO;
 	
 	@Autowired
 	private CategoryDAO categoryDAO;		
@@ -45,11 +44,11 @@ public class ManagementController {
 		mv.addObject("title","Product Management");		
 		mv.addObject("userClickManageProduct",true);
 		
-		Product nProduct = new Product();
+		Flight nProduct = new Flight();
 		
 		// assuming that the user is ADMIN
 		// later we will fixed it based on user is SUPPLIER or ADMIN
-		nProduct.setSupplierId(1);
+		//nProduct.setSupplierId(1);
 		nProduct.setActive(true);
 
 		mv.addObject("product", nProduct);
@@ -77,7 +76,7 @@ public class ManagementController {
 		mv.addObject("userClickManageProduct",true);
 		
 		// Product nProduct = new Product();		
-		mv.addObject("product", productDAO.get(id));
+		mv.addObject("product", flightDAO.get(id));
 
 			
 		return mv;
@@ -86,7 +85,7 @@ public class ManagementController {
 	
 	
 	@RequestMapping(value = "/product", method=RequestMethod.POST)
-	public String managePostProduct(@Valid @ModelAttribute("product") Product mProduct, 
+	public String managePostProduct(@Valid @ModelAttribute("product") Flight mProduct, 
 			BindingResult results, Model model, HttpServletRequest request) {
 		
 		// mandatory file upload check
@@ -95,9 +94,6 @@ public class ManagementController {
 		}
 		else {
 			// edit check only when the file has been selected
-			if(!mProduct.getFile().getOriginalFilename().equals("")) {
-				new ProductValidator().validate(mProduct, results);
-			}			
 		}
 		
 		if(results.hasErrors()) {
@@ -108,17 +104,12 @@ public class ManagementController {
 
 		
 		if(mProduct.getId() == 0 ) {
-			productDAO.add(mProduct);
+			flightDAO.add(mProduct);
 		}
 		else {
-			productDAO.update(mProduct);
+			flightDAO.update(mProduct);
 		}
 	
-		 //upload the file
-		 if(!mProduct.getFile().getOriginalFilename().equals("") ){
-			FileUtil.uploadFile(request, mProduct.getFile(), mProduct.getCode()); 
-		 }
-		
 		return "redirect:/manage/product?success=product";
 	}
 
@@ -126,10 +117,10 @@ public class ManagementController {
 	@RequestMapping(value = "/product/{id}/activation", method=RequestMethod.GET)
 	@ResponseBody
 	public String managePostProductActivation(@PathVariable int id) {		
-		Product product = productDAO.get(id);
+		Flight product = flightDAO.get(id);
 		boolean isActive = product.isActive();
 		product.setActive(!isActive);
-		productDAO.update(product);		
+		flightDAO.update(product);		
 		return (isActive)? "Product Dectivated Successfully!": "Product Activated Successfully";
 	}
 			

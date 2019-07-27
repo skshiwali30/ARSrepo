@@ -23,7 +23,7 @@ public class CartLine implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@OneToOne
-	private Product product;
+	private Flight product;
 	@Column(name = "cart_id")
 	private int cartId;	
 	@Column(name = "product_count")
@@ -46,10 +46,10 @@ public class CartLine implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Product getProduct() {
+	public Flight getProduct() {
 		return product;
 	}
-	public void setProduct(Product product) {
+	public void setProduct(Flight product) {
 		this.product = product;
 	}
 	public int getCartId() {

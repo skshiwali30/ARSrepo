@@ -152,7 +152,7 @@
 		    	</div>
 		    </div>
 		    <div class="text-center">
-		    	<a href="${contextRoot}/show/all/products" class="btn btn-lg btn-warning">Continue Shopping</a>
+		    	<a href="${contextRoot}/show/all/flights" class="btn btn-lg btn-warning">Continue Shopping</a>
 		    </div>
 		</div>
 <%@include file="../../flows-shared/footer.jsp" %>	
