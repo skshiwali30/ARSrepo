@@ -5,9 +5,7 @@
 <div class="container">
 
 	<div class="row">
-		<br>
-		<br>
-		<br>
+		<br> <br> <br>
 		<%-- <div class="col-md-3">
 			<%@include file="./shared/sidebar.jsp"%>
 		</div> --%>
@@ -210,10 +208,6 @@
 			</section>
 			<!-- / content -->
 		</div>
-
-
-
 	</div>
-
 </div>
 <!-- /.container -->

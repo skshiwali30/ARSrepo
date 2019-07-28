@@ -37,6 +37,9 @@ public class Flight implements Serializable {
 	@NotBlank(message = "Please enter the arrival time!")
 	private String arrivalTime;
 	
+	@NotBlank(message = "Please enter the Days!")
+	private String days;
+	
 	@NotNull(message = "Please enter the no of seats!")
 	@Column(name = "no_of_seats")
 	private int noOfSeats;
@@ -50,6 +53,14 @@ public class Flight implements Serializable {
 	// default constructor
 	public Flight() {
 		//this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
+	}
+
+	public String getDays() {
+		return days;
+	}
+
+	public void setDays(String days) {
+		this.days = days;
 	}
 
 	public int getId() {
@@ -127,8 +138,8 @@ public class Flight implements Serializable {
 	@Override
 	public String toString() {
 		return "Flight [id=" + id + ", code=" + code + ", source=" + source + ", destination=" + destination
-				+ ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime + ", noOfSeats=" + noOfSeats
-				+ ", active=" + active + ", fare=" + fare + "]";
+				+ ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime + ", days=" + days
+				+ ", noOfSeats=" + noOfSeats + ", active=" + active + ", fare=" + fare + "]";
 	}
 	
 }

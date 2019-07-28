@@ -1,12 +1,7 @@
 <div class="container">
 	<div class="row">
-		<!-- Would be to display sidebar -->
-		<div class="col-md-3">
-			<%@include file="./shared/sidebar.jsp"%>
-		</div>
-
-		<!-- to display the actual products -->
-		<div class="col-md-9">
+		
+		<div class="col-md-12">
 
 			<!-- Added breadcrumb component -->
 			<div class="row">
@@ -44,11 +39,12 @@
 					<table id="productListTable" class="table table-striped table-borderd">
 						<thead>
 							<tr>
-								<th>F.Code</th>
+								<th>Flight Code</th>
 								<th>Source</th>
-								<th>Dest.</th>
-								<th>Dep. Time</th>
-								<th>Arr. Time</th>
+								<th>Destination</th>
+								<th>Departure Time</th>
+								<th>Arrival Time</th>
+								<th>Days</th>
 								<th>Fare</th>
 								<th></th>
 							</tr>
