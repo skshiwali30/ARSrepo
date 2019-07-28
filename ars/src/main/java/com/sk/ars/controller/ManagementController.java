@@ -37,46 +37,34 @@ public class ManagementController {
 	@Autowired
 	private CategoryDAO categoryDAO;		
 
-	@RequestMapping("/product")
+	@RequestMapping("/flights")
 	public ModelAndView manageProduct(@RequestParam(name="success",required=false)String success) {		
-
-		ModelAndView mv = new ModelAndView("page");	
-		mv.addObject("title","Product Management");		
-		mv.addObject("userClickManageProduct",true);
 		
-		Flight nProduct = new Flight();
+		ModelAndView mv = new ModelAndView("page");	  // this signify page.jsp
+		mv.addObject("title","Flight Management");		// flag or attribute
+		mv.addObject("userClickManageFlight",true);	// flag or attribute to identify that user click on ManageProduct button.
 		
-		// assuming that the user is ADMIN
-		// later we will fixed it based on user is SUPPLIER or ADMIN
-		//nProduct.setSupplierId(1);
-		nProduct.setActive(true);
-
-		mv.addObject("product", nProduct);
-
+		Flight nFlight = new Flight();
 		
-		if(success != null) {
-			if(success.equals("product")){
-				mv.addObject("message", "Product submitted successfully!");
-			}	
-			else if (success.equals("category")) {
-				mv.addObject("message", "Category submitted successfully!");
-			}
-		}
-			
+		// Assuming that the user is ADMIN.
+		// later he will enable or disable flight.
+		nFlight.setActive(true);
+
+		mv.addObject("flight", nFlight);
 		return mv;
 		
 	}
 
 	
-	@RequestMapping("/{id}/product")
+	@RequestMapping("/{id}/flight")
 	public ModelAndView manageProductEdit(@PathVariable int id) {		
 
 		ModelAndView mv = new ModelAndView("page");	
-		mv.addObject("title","Product Management");		
-		mv.addObject("userClickManageProduct",true);
+		mv.addObject("title","Flight Management");		
+		mv.addObject("userClickManageFlight",true);
 		
 		// Product nProduct = new Product();		
-		mv.addObject("product", flightDAO.get(id));
+		mv.addObject("flight", flightDAO.get(id));
 
 			
 		return mv;
@@ -84,44 +72,45 @@ public class ManagementController {
 	}
 	
 	
-	@RequestMapping(value = "/product", method=RequestMethod.POST)
-	public String managePostProduct(@Valid @ModelAttribute("product") Flight mProduct, 
+	@RequestMapping(value = "/flight", method=RequestMethod.POST)
+	public String managePostProduct(@Valid @ModelAttribute("flight") Flight mFlight, 
 			BindingResult results, Model model, HttpServletRequest request) {
 		
+		//System.out.println("Hey"+mFlight);
+		
 		// mandatory file upload check
-		if(mProduct.getId() == 0) {
-			new ProductValidator().validate(mProduct, results);
+		if(mFlight.getId() == 0) {
+			new ProductValidator().validate(mFlight, results);
 		}
 		else {
 			// edit check only when the file has been selected
 		}
 		
 		if(results.hasErrors()) {
-			model.addAttribute("message", "Validation fails for adding the product!");
-			model.addAttribute("userClickManageProduct",true);
+			model.addAttribute("message", "Validation fails for adding the flight!");
+			model.addAttribute("userClickManageFlight",true);
 			return "page";
 		}			
 
-		
-		if(mProduct.getId() == 0 ) {
-			flightDAO.add(mProduct);
+		if(mFlight.getId() == 0 ) {
+			flightDAO.add(mFlight);
 		}
 		else {
-			flightDAO.update(mProduct);
+			flightDAO.update(mFlight);
 		}
 	
-		return "redirect:/manage/product?success=product";
+		return "redirect:/manage/flights";
 	}
 
 	
-	@RequestMapping(value = "/product/{id}/activation", method=RequestMethod.GET)
+	@RequestMapping(value = "/flight/{id}/activation", method=RequestMethod.GET)
 	@ResponseBody
 	public String managePostProductActivation(@PathVariable int id) {		
 		Flight product = flightDAO.get(id);
 		boolean isActive = product.isActive();
 		product.setActive(!isActive);
 		flightDAO.update(product);		
-		return (isActive)? "Product Dectivated Successfully!": "Product Activated Successfully";
+		return (isActive)? "Flight Disabled Successfully!": "Flight Enabled Successfully";
 	}
 			
 

@@ -17,7 +17,7 @@ public class JsonDataController {
 	@Autowired
 	private FlightDAO flightDAO;
 	
-	@RequestMapping("/admin/all/products")
+	@RequestMapping("/admin/all/flights")
 	@ResponseBody
 	public List<Flight> getAllProductsList() {		
 		return flightDAO.list();

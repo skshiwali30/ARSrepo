@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.kzn</groupId>
-	<artifactId>onlineshopping</artifactId>
+	<groupId>com.sk</groupId>
+	<artifactId>ars</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>onlineshopping Maven Webapp</name>
+	<name>ars Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
 	<!-- Version information will be stored here -->
@@ -20,8 +20,8 @@
 
 		<!-- Link backend project -->
 		<dependency>
-			<groupId>net.kzn</groupId>
-			<artifactId>shoppingbackend</artifactId>
+			<groupId>com.sk</groupId>
+			<artifactId>arsbackend</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
@@ -109,6 +109,6 @@
 			</plugin>
 		</plugins>
 
-		<finalName>onlineshopping</finalName>
+		<finalName>ars</finalName>
 	</build>
 </project>
