@@ -9,6 +9,7 @@ CREATE TABLE FLIGHT (
 	destination varchar(20),
 	departureTime varchar(10),
 	arrivalTime varchar(10),
+	days varchar(20),
 	no_of_seats int(10),
 	is_active BOOLEAN,
 	fare double,

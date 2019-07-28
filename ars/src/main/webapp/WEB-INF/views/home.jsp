@@ -206,10 +206,6 @@
 			</section>
 			<!-- / content -->
 		</div>
-
-
-
 	</div>
-
 </div>
 <!-- /.container -->

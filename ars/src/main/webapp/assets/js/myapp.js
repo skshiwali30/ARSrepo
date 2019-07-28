@@ -80,6 +80,9 @@ $(function() {
 								data: 'arrivalTime'
 							},
 							{
+								data: 'days'
+							},
+							{
 								data : 'fare',
 								mRender : function(data, type, row) {
 									return '&#8377; ' + data
@@ -104,16 +107,7 @@ $(function() {
 													+ '/product" class="btn btn-success"><span class="glyphicon glyphicon-bold"></span></a>';
 										}
 									}
-									else {
-										str += '<a href="'
-											+ window.contextRoot
-											+ '/manage/'
-											+ data
-											+ '/flight" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>';
-									}
-									
 									return str;
-
 								}
 
 							} ]
@@ -156,6 +150,9 @@ $(function() {
 								},
 								{
 									data : 'arrivalTime'
+								},
+								{
+									data : 'days'
 								},
 								{
 									data : 'noOfSeats',
