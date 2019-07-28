@@ -5,12 +5,7 @@
 <div class="container">
 
 	<div class="row">
-		<br>
-		<br>
-		<br>
-		<%-- <div class="col-md-3">
-			<%@include file="./shared/sidebar.jsp"%>
-		</div> --%>
+		<br><br><br>
 
 		<div class="col-md-12">
 
@@ -57,7 +52,8 @@
 
 		<div>
 			<!-- content -->
-			<section id="content">
+			<section id="content" style="
+    margin-left: 1em;">
 				<article class="col1">
 					<div class="pad_1">
 						<h2>Your Flight Planner</h2>
@@ -80,7 +76,7 @@
 										onblur="if(this.value=='') this.value='Enter City or Airport Code'"
 										onFocus="if(this.value =='Enter City or Airport Code' ) this.value=''">
 								</div>
-							</div>
+;							</div>
 							<div class="wrapper">
 								Going To:
 								<div class="bg">

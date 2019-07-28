@@ -57,7 +57,7 @@ header .right {width:600px}
 .list1 li {line-height:20px}
 .list1 li a {padding-left:13px;background:url(../images/marker_1.gif) 0 5px no-repeat}
 /* footer */
-footer {padding:35px 0 0 0;height:72px;width:100%;overflow:hidden;font-size:12px;line-height:18px;color:#fff;text-align:center}
+footer {padding:35px 0 0 0;height:72px;width:100%;overflow:hidden;font-size:12px;line-height:18px;color:#000;text-align:center}
 footer a {color:#3e96b4}
 /* forms */
 #form_1 p {padding-bottom:0}

@@ -1,10 +1,13 @@
-<div class="container">
+<br><br><div class="container">
 	<div class="row">
 		<div class="main">
 			<!-- content -->
-			<h1>About Us</h1>
+			
+			
 			<hr />
-			<h2>Did You Know?</h2>
+			<h1>about us</h1>			<h2>Did You Know?</h2>
+			
+			
 			<p>
 				<strong>Lorem ipsum dolor</strong> sit amet, consectetur adipisicing
 				elit, sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -71,3 +74,4 @@
 		</div>
 	</div>
 </div>
+    
