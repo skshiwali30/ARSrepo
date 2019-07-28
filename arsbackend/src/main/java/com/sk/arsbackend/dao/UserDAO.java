@@ -3,7 +3,6 @@ package com.sk.arsbackend.dao;
 import java.util.List;
 
 import com.sk.arsbackend.dto.Address;
-import com.sk.arsbackend.dto.Cart;
 import com.sk.arsbackend.dto.User;
 
 public interface UserDAO {

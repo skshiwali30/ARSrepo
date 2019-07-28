@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import com.sk.ars.model.RegisterModel;
 import com.sk.arsbackend.dao.UserDAO;
 import com.sk.arsbackend.dto.Address;
-import com.sk.arsbackend.dto.Cart;
 import com.sk.arsbackend.dto.User;
 
 @Component
@@ -52,9 +51,9 @@ public class RegisterHandler {
   User user = registerModel.getUser();
   if(user.getRole().equals("USER")) {
    // create a new cart
-   Cart cart = new Cart();
-   cart.setUser(user);
-   user.setCart(cart);
+   //  Cart cart = new Cart();
+   // cart.setUser(user);
+   // user.setCart(cart);
   }
    
   // encode the password
@@ -62,7 +61,6 @@ public class RegisterHandler {
   
   // save the user
   userDAO.add(user);
-  // save the billing address
   Address billing = registerModel.getBilling();
   billing.setUserId(user.getId());
   billing.setBilling(true);  

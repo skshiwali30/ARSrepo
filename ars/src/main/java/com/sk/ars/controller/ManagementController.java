@@ -1,7 +1,5 @@
 package com.sk.ars.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -20,9 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sk.ars.validator.ProductValidator;
-import com.sk.arsbackend.dao.CategoryDAO;
 import com.sk.arsbackend.dao.FlightDAO;
-import com.sk.arsbackend.dto.Category;
 import com.sk.arsbackend.dto.Flight;
 
 @Controller
@@ -33,9 +29,6 @@ public class ManagementController {
 
 	@Autowired
 	private FlightDAO flightDAO;
-	
-	@Autowired
-	private CategoryDAO categoryDAO;		
 
 	@RequestMapping("/flights")
 	public ModelAndView manageProduct(@RequestParam(name="success",required=false)String success) {		
@@ -101,7 +94,6 @@ public class ManagementController {
 	
 		return "redirect:/manage/flights";
 	}
-
 	
 	@RequestMapping(value = "/flight/{id}/activation", method=RequestMethod.GET)
 	@ResponseBody
@@ -113,26 +105,6 @@ public class ManagementController {
 		return (isActive)? "Flight Disabled Successfully!": "Flight Enabled Successfully";
 	}
 			
-
-	@RequestMapping(value = "/category", method=RequestMethod.POST)
-	public String managePostCategory(@ModelAttribute("category") Category mCategory, HttpServletRequest request) {					
-		categoryDAO.add(mCategory);		
-		return "redirect:" + request.getHeader("Referer") + "?success=category";
-	}
-			
-	
-	
-	@ModelAttribute("categories") 
-	public List<Category> modelCategories() {
-		return categoryDAO.list();
-	}
-	
-	@ModelAttribute("category")
-	public Category modelCategory() {
-		return new Category();
-	}
-	
-	
 }
 
 	

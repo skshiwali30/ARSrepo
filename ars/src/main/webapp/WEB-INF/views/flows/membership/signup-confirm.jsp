@@ -33,7 +33,7 @@
 			<div class="panel panel-primary">
 				
 				<div class="panel-heading">
-					<h4>Billing Address</h4>
+					<h4>Address</h4>
 				</div>
 			
 				<div class="panel-body">
