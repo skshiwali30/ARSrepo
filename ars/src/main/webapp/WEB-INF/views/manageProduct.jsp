@@ -7,6 +7,7 @@
 	<hr />
 
 	<div class="row">
+	<br>
 		<div class='col-xs-12'>
 			<table id="productsTable"
 				class="table table-condensed table-bordered">
@@ -42,9 +43,11 @@
 	</c:if>
 
 	<div class="row">
+	
 		<div class="col-md-offset-2 col-md-8">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
+				
 					<h4>Flight Management</h4>
 				</div>
 				<div class="panel-body">

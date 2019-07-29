@@ -3,7 +3,7 @@
 CREATE DATABASE airlines;
 
 CREATE TABLE FLIGHT (
-	id IDENTITY,
+	id int AUTO_INCREMENT,
 	code varchar(30),
 	source varchar(20),
 	destination varchar(20),
@@ -17,7 +17,7 @@ CREATE TABLE FLIGHT (
 );
 
 CREATE TABLE user_detail (
-	id IDENTITY,
+	id int AUTO_INCREMENT,
 	first_name VARCHAR(50),
 	last_name VARCHAR(50),
 	role VARCHAR(50),
@@ -30,7 +30,7 @@ CREATE TABLE user_detail (
 
 -- the address table to store the user address.
 CREATE TABLE address (
-	id IDENTITY,
+	id int AUTO_INCREMENT,
 	user_id int,
 	address_line_one VARCHAR(100),
 	address_line_two VARCHAR(100),

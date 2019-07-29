@@ -5,7 +5,7 @@
 
 			<!-- Added breadcrumb component -->
 			<div class="row">
-
+				<br><br><br><br><br>
 				<div class="col-lg-12">
 
 					<c:if test="${userClickAllFlights == true}">
