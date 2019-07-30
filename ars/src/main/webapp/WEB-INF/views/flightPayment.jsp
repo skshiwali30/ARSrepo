@@ -1,4 +1,5 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<br><br><br><br><br>
 <div class="container">
 
 <c:choose>
@@ -96,7 +97,7 @@
 	                <li class="active"><a href="#"><span class="badge pull-right"> &#8377; ${flight.fare}/-</span> Final Payment</a></li>
 	            </ul>
 	            <br/>
-	            <a href="#" class="btn btn-success btn-lg btn-block" role="button">Pay</a>
+	            <!-- <a href="#" class="btn btn-success btn-lg btn-block" role="button">Pay</a> -->
 			</div>
 	</div>
 		</c:when>

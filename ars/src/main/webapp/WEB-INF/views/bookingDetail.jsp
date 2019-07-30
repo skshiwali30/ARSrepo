@@ -1,5 +1,5 @@
 <%-- <c:set var="availableCount" value="${userModel.cart.cartLines}" /> --%>
-
+<br><br><br><br>
 <div class="container">
 	<c:choose>
 		<c:when test="${not empty flight}">
@@ -49,7 +49,7 @@
 								<td><a href="javascript:void(0)" class="btn btn-success btn-block disabled"><strike>Checkout <span class="glyphicon glyphicon-chevron-right"></span></strike></a></td>
 							</c:otherwise>
 						</c:choose>	 --%>
-						<td><a href="${contextRoot}/cart/validate" class="btn btn-success btn-block">Payment <span class="glyphicon glyphicon-chevron-right"></span></a></td>					
+						<td><a href="${contextRoot}/booking/${flight.id}/pay" class="btn btn-success btn-block">Payment <span class="glyphicon glyphicon-chevron-right"></span></a></td>					
 					</tr>
 				</tfoot>
 			</table>

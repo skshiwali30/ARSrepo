@@ -68,36 +68,6 @@ public class PageController {
 		return mv;				
 	}	
 	
-	
-	/*
-	 * Viewing a single product
-	 * */
-	
-	@RequestMapping(value = "/show/{id}/product") 
-	public ModelAndView showSingleProduct(@PathVariable int id) throws ProductNotFoundException {
-		
-		ModelAndView mv = new ModelAndView("page");
-		
-		Flight product = flightDAO.get(id);
-		
-		if(product == null) throw new ProductNotFoundException();
-		
-		// update the view count
-		// product.setViews(product.getViews() + 1);
-		// flightDAO.update(product);
-		//---------------------------
-		
-		mv.addObject("title", product.getCode());
-		mv.addObject("product", product);
-		
-		mv.addObject("userClickShowProduct", true);
-		
-		
-		return mv;
-		
-	}
-	
-	
 	@RequestMapping(value="/membership")
 	public ModelAndView register() {
 		ModelAndView mv= new ModelAndView("page");

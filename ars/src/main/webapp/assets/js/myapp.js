@@ -102,9 +102,9 @@ $(function() {
 	
 											str += '<a href="'
 													+ window.contextRoot
-													+ '/cart/add/'
+													+ '/booking/'
 													+ data
-													+ '/product" class="btn btn-success"><span class="glyphicon glyphicon-bold"></span></a>';
+													+ '/flight" class="btn btn-success"><span class="glyphicon glyphicon-bold"></span></a>';
 										}
 									}
 									return str;

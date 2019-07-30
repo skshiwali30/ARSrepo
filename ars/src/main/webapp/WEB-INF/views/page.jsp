@@ -89,6 +89,18 @@
 			<c:if test="${userClickManageFlight == true}">
 				<%@include file="manageProduct.jsp"%>
 			</c:if>
+			
+			<c:if test="${userClickBooking == true}">
+				<%@include file="bookingDetail.jsp"%>
+			</c:if>	
+			
+			<c:if test="${userClickPayment == true}">
+				<%@include file="flightPayment.jsp"%>
+			</c:if>
+			
+			<c:if test="${userBookingSuccess == true}">
+				<%@include file="flightComfirm.jsp"%>
+			</c:if>	
 
 		</div>
 

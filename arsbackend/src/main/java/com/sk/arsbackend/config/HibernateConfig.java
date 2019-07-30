@@ -25,6 +25,13 @@ public class HibernateConfig {
 	private final static String DATABASE_USERNAME = "root";
 	private final static String DATABASE_PASSWORD = "";
 	
+	// for H2 
+	/* private final static String DATABASE_URL = "jdbc:h2:tcp://localhost/~/onlineshopping";
+	private final static String DATABASE_DRIVER = "org.h2.Driver";
+	private final static String DATABASE_DIALECT = "org.hibernate.dialect.H2Dialect";
+	private final static String DATABASE_USERNAME = "sa";
+	private final static String DATABASE_PASSWORD = ""; */
+	
 	// dataSource bean will be available
 	@Bean("dataSource")
 	public DataSource getDataSource() {

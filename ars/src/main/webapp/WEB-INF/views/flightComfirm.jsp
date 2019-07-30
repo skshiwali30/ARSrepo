@@ -1,4 +1,5 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<br><br><br><br>
 <div class="container">
 
 <c:choose>
@@ -11,7 +12,7 @@
 					<div class="col-xs-12">
 					<p class="text-center">Your Ticket confirmed. Please take print out.</p>
 						<div>
-							<h4 style="float: right; class="text-right">PNR Code - MR${flight.code}P{payment.id}/-</h4>
+							<h4 style="float: right; class="text-right">PNR Code - MR${flight.code}</h4>
 							<h3>${flight.code}</h3>
 							<hr/>
 							<h4>Source -${flight.source}</h4>
