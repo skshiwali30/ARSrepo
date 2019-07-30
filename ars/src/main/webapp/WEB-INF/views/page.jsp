@@ -81,11 +81,11 @@
 
 			<!-- Load only when user clicks contact -->
 			<c:if
-				test="${userClickAllFlights == true or userClickCategoryFlights == true }">
+				test="${userClickAllFlights == true }">
 				<%@include file="listProducts.jsp"%>
 			</c:if>
 
-			<!-- Load only when user clicks manage product -->
+			<!-- Load only when admin clicks manage product -->
 			<c:if test="${userClickManageFlight == true}">
 				<%@include file="manageProduct.jsp"%>
 			</c:if>

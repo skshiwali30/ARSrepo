@@ -1,8 +1,8 @@
 <br><br><div class="container">
-	<div class="row">
+	<div class="row"><br><br>
 			<div class="split left">
 				<div class="centered">
-					<h2>Contact Us</h2>
+					<h1>Contact Us</h1><br><br>
 					<span class="cols"> Country: INDIA<br> City: New Delhi<br>
 						Telephone: +91 3011275<br> Email: <a href="mailto:">airlines12@mail.com</a>
 					</span>
@@ -12,7 +12,7 @@
 			
 			<div class="split right">
 				<div class="centered">
-					<h2>Contact Form</h2>
+					<h1>Contact Form</h1><br><br>
 					<form id="ContactForm" action="">
 						<div class="wrapper">
 							<div class="bg">

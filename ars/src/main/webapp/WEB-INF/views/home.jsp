@@ -24,16 +24,16 @@
 						<div class="carousel-inner">
 
 							<div class="item active">
-								<img class="slide-image" src="${images}/banner01.jpg" alt="">
+								<img class="slide-image" src="${images}/banner01.jpg" alt="image1">
 							</div>
 							<div class="item">
-								<img class="slide-image" src="${images}/banner02.jpg" alt="">
+								<img class="slide-image" src="${images}/banner02.jpg" alt="image2">
 							</div>
 							<div class="item">
-								<img class="slide-image" src="${images}/banner01.jpg" alt="">
+								<img class="slide-image" src="${images}/banner01.jpg" alt="image1">
 							</div>
 							<div class="item">
-								<img class="slide-image" src="${images}/banner02.jpg" alt="">
+								<img class="slide-image" src="${images}/banner02.jpg" alt="image2">
 							</div>
 						</div>
 						<a class="left carousel-control" href="#carousel-example-generic"

@@ -20,17 +20,6 @@
 						</ol>
 					</c:if>
 					
-					<c:if test="${userClickCategoryFlights == true}">
-						<script>
-							window.categoryId = '${category.id}';
-						</script>
-					
-						<ol class="breadcrumb">
-							<li><a href="${contextRoot}/home">Home</a></li>
-							<li class="active">Category</li>
-							<li class="active">${category.name}</li>
-						</ol>
-					</c:if>
 				</div>
 			</div>
 			

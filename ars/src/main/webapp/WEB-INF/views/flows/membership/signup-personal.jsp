@@ -85,7 +85,7 @@
 										<sf:radiobutton path="role" value="USER" checked="checked"/> User 				
 									</label>
 									<label class="radio-inline">
-										<sf:radiobutton path="role" value="Agent"/> Agent
+										<sf:radiobutton path="role" value="Agent"/> Admin
 									</label>
 								</div>
 							</div>							
