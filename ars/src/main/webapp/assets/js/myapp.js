@@ -32,7 +32,7 @@ $(function() {
 	case 'All Products':
 		$('#listProducts').addClass('active');
 		break;
-	case 'Product Management':
+	case 'Flight Management':
 		$('#manageProduct').addClass('active');
 		break;
 	case 'Shopping Cart':
@@ -80,6 +80,9 @@ $(function() {
 								data: 'arrivalTime'
 							},
 							{
+								data: 'days'
+							},
+							{
 								data : 'fare',
 								mRender : function(data, type, row) {
 									return '&#8377; ' + data
@@ -104,16 +107,7 @@ $(function() {
 													+ '/product" class="btn btn-success"><span class="glyphicon glyphicon-bold"></span></a>';
 										}
 									}
-									else {
-										str += '<a href="'
-											+ window.contextRoot
-											+ '/manage/'
-											+ data
-											+ '/product" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>';
-									}
-									
 									return str;
-
 								}
 
 							} ]
@@ -128,7 +122,7 @@ $(function() {
 	
 	if($productsTable.length) {
 		
-		var jsonUrl = window.contextRoot + '/json/data/admin/all/products';
+		var jsonUrl = window.contextRoot + '/json/data/admin/all/flights';
 		console.log(jsonUrl);
 		
 		$productsTable.DataTable({
@@ -141,35 +135,30 @@ $(function() {
 					columns : [		
 					           	{data: 'id'},
 
-
 					           	{data: 'code',
 					           	 bSortable: false,
-					           		mRender: function(data,type,row) {
-					           			return '<img src="' + window.contextRoot
-										+ '/resources/images/' + data
-										+ '.jpg" class="dataTableImg"/>';					           			
-					           		}
+					           							           			
 					           	},
-					           	{
-									data : 'name'
+								{
+									data : 'source'
 								},
 								{
-									data : 'brand'
+									data : 'destination'
 								},
 								{
-									data : 'quantity',
-									mRender : function(data, type, row) {
-
-										if (data < 1) {
-											return '<span style="color:red">Out of Stock!</span>';
-										}
-
-										return data;
-
-									}
+									data : 'departureTime'
 								},
 								{
-									data : 'unitPrice',
+									data : 'arrivalTime'
+								},
+								{
+									data : 'days'
+								},
+								{
+									data : 'noOfSeats',
+								},
+								{
+									data : 'fare',
 									mRender : function(data, type, row) {
 										return '&#8377; ' + data
 									}
@@ -199,7 +188,7 @@ $(function() {
 												+ window.contextRoot
 												+ '/manage/'
 												+ data
-												+ '/product" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> &#160;';
+												+ '/flight" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> &#160;';
 
 										return str;
 									}
@@ -210,19 +199,19 @@ $(function() {
 					initComplete: function () {
 						var api = this.api();
 						api.$('.switch input[type="checkbox"]').on('change' , function() {							
-							var dText = (this.checked)? 'You want to activate the Product?': 'You want to de-activate the Product?';
+							var dText = (this.checked)? 'You want to enable the Flight?': 'You want to disable the flight?';
 							var checked = this.checked;
 							var checkbox = $(this);
 							debugger;
 						    bootbox.confirm({
 						    	size: 'medium',
-						    	title: 'Product Activation/Deactivation',
+						    	title: 'Flight Activation/Deactivation',
 						    	message: dText,
 						    	callback: function (confirmed) {
 							        if (confirmed) {
 							            $.ajax({							            	
 							            	type: 'GET',
-							            	url: window.contextRoot + '/manage/product/'+checkbox.prop('value')+'/activation',
+							            	url: window.contextRoot + '/manage/flight/'+checkbox.prop('value')+'/activation',
 							        		timeout : 100000,
 							        		success : function(data) {
 							        			bootbox.alert(data);							        										        			

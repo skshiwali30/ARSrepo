@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
@@ -36,19 +37,30 @@ public class Flight implements Serializable {
 	@NotBlank(message = "Please enter the arrival time!")
 	private String arrivalTime;
 	
-	@NotBlank(message = "Please enter the no of seats!")
+	@NotBlank(message = "Please enter the Days!")
+	private String days;
+	
+	@NotNull(message = "Please enter the no of seats!")
 	@Column(name = "no_of_seats")
 	private int noOfSeats;
 	
 	@Column(name = "is_active")	
 	private boolean active;
 	
-	@NotBlank(message = "Please enter fare!")
+	@NotNull(message = "Please enter fare!")
 	private double fare;
 	
 	// default constructor
 	public Flight() {
 		//this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
+	}
+
+	public String getDays() {
+		return days;
+	}
+
+	public void setDays(String days) {
+		this.days = days;
 	}
 
 	public int getId() {
@@ -122,4 +134,12 @@ public class Flight implements Serializable {
 	public void setFare(double fare) {
 		this.fare = fare;
 	}
+
+	@Override
+	public String toString() {
+		return "Flight [id=" + id + ", code=" + code + ", source=" + source + ", destination=" + destination
+				+ ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime + ", days=" + days
+				+ ", noOfSeats=" + noOfSeats + ", active=" + active + ", fare=" + fare + "]";
+	}
+	
 }

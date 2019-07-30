@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.sk.ars.model.UserModel;
 import com.sk.arsbackend.dao.UserDAO;
-import com.sk.arsbackend.dto.Cart;
 import com.sk.arsbackend.dto.User;
 
 @ControllerAdvice
@@ -47,7 +46,7 @@ public class GlobalController {
 					userModel.setRole(user.getRole());
 					
 					if(user.getRole().equals("USER")) {
-						userModel.setCart(user.getCart());					
+						//userModel.setCart(user.getCart());					
 					}				
 	
 					session.setAttribute("userModel", userModel);

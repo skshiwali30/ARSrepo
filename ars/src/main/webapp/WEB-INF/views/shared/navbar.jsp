@@ -30,7 +30,7 @@
                     </li>
 					<security:authorize access="hasAuthority('ADMIN')">
 	                    <li id="manageProduct">
-	                        <a href="${contextRoot}/manage/product">Manage Product</a>
+	                        <a href="${contextRoot}/manage/flights">Manage Flights</a>
 	                    </li>					
 					</security:authorize>
                 </ul>
@@ -52,11 +52,6 @@
 						  </a>
 						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 		                    <security:authorize access="hasAuthority('USER')">
-			                    <li id="cart">
-			                        <a href="${contextRoot}/cart/show">
-			                        	<span class="glyphicon glyphicon-bold"></span>&#160;<span class="badge">${userModel.cart.cartLines}</span> - &#8377; ${userModel.cart.grandTotal} 
-			                        </a>
-			                    </li>		     
 			                	<li role="separator" class="divider"></li>	                                   
 		                    </security:authorize>
 							<li id="logout">
