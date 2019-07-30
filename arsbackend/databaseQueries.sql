@@ -43,3 +43,15 @@ CREATE TABLE address (
 	CONSTRAINT fk_address_user_id FOREIGN KEY (user_id ) REFERENCES user_detail (id),
 	CONSTRAINT pk_address_id PRIMARY KEY (id)
 );
+
+CREATE TABLE payment(
+	id AUTO_INCREMENT,
+	creditCardNumber varchar(30),
+	flightId INT,
+	expiryDateMM INT,
+	expiryDateYY INT,
+	cvCode INT,
+	finalPayment double,
+	CONSTRAINT pk_payment_id primary key(id),
+	CONSTRAINT fk_payment_flight_id FOREIGN KEY (flightId) REFERENCES flight (id)
+);
